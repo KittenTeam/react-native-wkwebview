@@ -143,6 +143,7 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
                            injectionTime:WKUserScriptInjectionTimeAtDocumentEnd
                                                forMainFrameOnly:_injectedJavaScriptForMainFrameOnly];
     [_webView.configuration.userContentController addUserScript:script];
+    [_webView.configuration.preferences setValue:@(true) forKey:@"allowFileAccessFromFileURLs"];
   }
 }
 
