@@ -64,7 +64,11 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
     _contentInset = UIEdgeInsetsZero;
 
     WKWebViewConfiguration* config = [[WKWebViewConfiguration alloc] init];
-    config.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeNone;
+    if ([[UIDevice currentDevice].systemVersion floatValue] < 10.0) {
+      config.requiresUserActionForMediaPlayback = WKAudiovisualMediaTypeNone;
+    } else {
+      config.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypeNone;
+    }
     config.processPool = processPool;
     WKUserContentController* userController = [[WKUserContentController alloc]init];
     [userController addScriptMessageHandler:[[WeakScriptMessageDelegate alloc] initWithDelegate:self] name:@"reactNative"];
