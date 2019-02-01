@@ -606,7 +606,7 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
 - (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView
 {
   RCTLogWarn(@"Webview Process Terminated");
-  [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"NativeEventGA" object:@"webview_crash" userInfo: nil]];
+  [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"NativeEventGA" object:@"ios_webview_crash" userInfo: nil]];
 }
 
 @end
